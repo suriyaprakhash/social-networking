@@ -9,7 +9,6 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import com.integral.assignment.socialnetworking.model.Memory;
 import com.integral.assignment.socialnetworking.model.Post;
 
 public class SNCoreTest {
@@ -20,11 +19,16 @@ public class SNCoreTest {
 	}
 	
 	@Test
+	public void testGetMemory() {
+		assertTrue(SNCore.getMemory() !=null);
+	}
+	
+	@Test
 	public void testPublisMsg() {
 		//testPublish
 		int res = SNCore.publishMsg("Alicer", "msg1");
 		assertEquals(1, res);
-		List<Post> postList=SNCore.memory.getTimelineMap().get("Alicer");
+		List<Post> postList=SNCore.getMemory().getTimelineMap().get("Alicer");
 		assertEquals("msg1",postList.get(postList.size()-1).getMsg());
 	}
 	
@@ -36,7 +40,7 @@ public class SNCoreTest {
 		int folRes2=SNCore.follow("Alicem", "Charliem");
 		assertEquals(1, folRes2);
 		
-		Set<String> followingSet=SNCore.memory.getFollowMap().get("Alicem");
+		Set<String> followingSet=SNCore.getMemory().getFollowMap().get("Alicem");
 		assertTrue(followingSet.contains("Bobm"));
 		assertTrue(followingSet.contains("Charliem"));
 	}

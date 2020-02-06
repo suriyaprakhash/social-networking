@@ -21,7 +21,16 @@ import com.integral.assignment.socialnetworking.model.Post;
  */
 public class SNCore {
 
-	public static Memory memory = new Memory();
+	private static Memory memory = new Memory();
+
+	
+	/**
+	 * Used to see memory any time
+	 * @return memory
+	 */
+	public static Memory getMemory() {
+		return memory;
+	}
 
 	/**
 	 * This publishes the msg into the memory
